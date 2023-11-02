@@ -27,7 +27,6 @@ handler_csrf_failure = 'myapp.views.handler_csrf_failure'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Gigachad.urls')),
-
 ]
 
 handler404 = pageNotFound

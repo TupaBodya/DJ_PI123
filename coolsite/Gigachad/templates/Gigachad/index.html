@@ -1,15 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gigachad Site</title>
-</head>
-<body>
-<h1>{{menu}}</h1>
-<h1>{{title}}</h1>
-<p>{{float}}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content1 %}
+<br>
+<hr>
+<h1>{{menu}} - меню</h1>
+<h1>{{title}} - преобразует строку в заголовок</h1>
+<p>{{url}}-</p>
+<p>{{float}}- иррациональное число</p>
+<p>{{int}} - целое число</p>
+<p>{{obj}}- множество </p>
+<p>{{list}} </p>
+<p>{{set}}</p>
+<p>{{dict}}</p>
+<p>{{bool}}</p>
+<p>{{value}}</p>
+<p>{{bool | upper}}</p>
+<p>{{url | urlencode}}</p>
+<p>{{bool |add:"50"}}</p>
+<br>
+<a href="{% url 'home' %}"> О сайте</a>
+<br>
+{% include 'Gigachad/includes/includes.html' only with pi=3.14 %}
+<ul>
+    {% for p in posts %}
+    <li>
+        <h2>{{p.FIO}}</h2>
+        <p>{{p.interesting}}</p>
+        {% if not forloop.last %}
+        <hr>
+        {%endif %}
+    </li>
+    {%endfor %}
+</ul>
+
+{% endblock %}
