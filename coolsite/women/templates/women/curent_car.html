@@ -1,0 +1,84 @@
+{% load static %}
+
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>{{Model}}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="../../static/women/css/stylesheet.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/" class="nav-link" aria-current="page">На главную</a></li>
+                <li class="nav-item"><a href="/cars/" class="nav-link" aria-current="page">К списку авто</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" aria-current="page">О нас</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" aria-current="page">FAQs</a></li>
+            </ul>
+        </header>
+    </div>
+{{ list }}
+    <div class="container">
+        <div class="auto-spisok">
+            <h1>Данные об авто:</h1>
+            <h2>{{Model}}</h2>
+            <br>
+            <i>Дата изготовления: {{Date}} год.</i>
+            <br>
+            <i>Пробег: {{Range}} Км.</i>
+            <br>
+            <i>
+                Двигатель:
+                {% if Engine == 'Deisel' %}
+                    Дизельный
+                {% else %}
+                    Бензиновый
+                {% endif %}
+            </i>
+            <br>
+            <i>
+                Тип:
+                {% if Type == 'sedan' %}
+                    Седан
+                {% else %}
+                    Внедорожник
+                {% endif %}
+            </i>
+            <br>
+            <i>
+                Наличие:
+                {% if Availability %}
+                    Имеется в наличии
+                {% else %}
+                    Не имеется в наличии
+                {% endif %}
+                </i>
+                    <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+                        <div class="d-grid gap-2">
+                                <button class="btn btn-outline-secondary" type="button" aria-current="page" href="/">
+                                    <a class="none2" href="/" aria-current="page">Отложить в избранное</a>
+                                </button>
+                                <button class="btn btn-primary" type="button" aria-current="page" href="/">
+                                    <a class="none" href="/" aria-current="page">Купить прямо сейчас</a>
+                                </button>
+
+                        </div>
+                    </div>
+            <div class="container">
+                <marquee behavior="alternate" direction="" scrollamount="7" vspace="">
+                    <img src="{% static 'women/image/' %}{{image_}}">
+                    <img src="{% static 'women/image/' %}{{image2_}}">
+                    <img src="{% static 'women/image/' %}{{image3_}}">
+                </marquee>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+        © 2023 Автосалон Богдана. Засчитайте пожалуйста РГР.
+      </footer>
+</div>
+</body>
+</html>

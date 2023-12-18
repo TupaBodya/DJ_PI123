@@ -1,0 +1,33 @@
+
+.auto-spisok img{
+    border-radius: 25px;
+    flex-shrink: 0;
+    width: 1000px;
+    height: 600px;
+}
+
+.auto-spisok {
+    color: black;
+    text-align: center;
+    font-family: Impact;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.container {
+    text-align: center;
+}
+
+.none {
+    text-decoration: none;
+    color: white;
+}
+
+.none2 {
+    text-decoration: none;
+    color: #007bff;
+}
+
+

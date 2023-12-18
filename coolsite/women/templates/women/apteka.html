@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<ul>
+    {% for m in menu %}
+    <li>
+        <a href="{% url m.url_n %}"> {{m.title}} </a>
+    </li>
+    {% endfor %}
+</ul>
+<h1>{{menu.5.title }}</h1>
+<ul>
+    {% for pr in apteka %}
+        <h2>{{ pr.kod }} </h2>
+        <p>{{ pr.disease }}</p>
+        <p>{{ pr.dosage }}</p>
+        {% if not pr.disease %}
+           Препарат не имеет вида болезни
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for pr in apteka %}
+        <h2>{{ pr.kod }} </h2>
+        <p>{{ pr.disease }}</p>
+        <p>{{ pr.dosage }}</p>
+        {% if "00" in pr.dosage %}
+            Препарат имеет большую дозировку, необходима консультация
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for pr in apteka %}
+        <h2>{{ pr.kod }} </h2>
+        <p>{{ pr.disease }}</p>
+        <p>{{ pr.dosage }}</p>
+        {% if pr.kod > 50 %}
+            Препарат имеет побочные действия
+        {% endif %}
+    {% endfor %}
+
+</ul>
+</body>
+</html>

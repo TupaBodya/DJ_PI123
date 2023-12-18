@@ -14,22 +14,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
-from Gigachad.views import *
-
-handler500 = 'myapp.views.handler500'
-handler403 = 'myapp.views.handler403'
-handler400 = 'myapp.views.handler400'
-handler_csrf_failure = 'myapp.views.handler_csrf_failure'
+from women.views import pageNotFound, Forbidden, ErrBadRequest, InternalServerError
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Gigachad.urls')),
+    path('', include('women.urls')),
 ]
 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
 handler404 = pageNotFound
-handler500 = Error500
-handler403 = Error403
-handler400 = Error400
+handler403 = Forbidden
+handler400 = ErrBadRequest
+handler500 = InternalServerError
+

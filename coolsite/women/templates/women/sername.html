@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список авто</title>
+    <link type="text/css" href="{% static 'women/css/style_gl.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h1>Автосалон Богдана</h1>
+        <ul>
+            {% for i in Cars %}
+                {% if i.Type == 'off-road' %}
+                    <li>
+                        <a href="{% url student_url i.id %}" class="url">
+                            <b>{{i.Model}}</b>
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url student_url i.id %}" class="url">
+                            <i>{{i.Model}}</i>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <br>
+
+</body>
+</html>
