@@ -1,24 +1,49 @@
+{% extends 'women/base.html' %}
 {% load static %}
 
-<html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <title>{{Model}}</title>
+    {% block link %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="../../static/women/css/stylesheet.css" rel="stylesheet">
-</head>
-<body>
-    <div>
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link" aria-current="page">На главную</a></li>
-                <li class="nav-item"><a href="/cars/" class="nav-link" aria-current="page">К списку авто</a></li>
-                <li class="nav-item"><a href="#" class="nav-link" aria-current="page">О нас</a></li>
-                <li class="nav-item"><a href="#" class="nav-link" aria-current="page">FAQs</a></li>
-            </ul>
-        </header>
-    </div>
-{{ list }}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    {% endblock %}
+
+{% block header1 %}
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/">
+                    <button type="button" class="btn btn-primary">
+                        Главная страница
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/about/">
+                    <button type="button" class="btn btn-primary">
+                        О приложении
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/cars/">
+                    <button type="button" class="btn btn-primary">
+                        Автомобили
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/car_sell">
+                    <button type="button" class="btn btn-primary">
+                        Оплатить покупку
+                    </button>
+                </a>
+            </li>
+
+
+{% endblock %}
+
+
+{% block car %}
+    <hr class="my-4 container">
     <div class="container">
         <div class="auto-spisok">
             <h1>Данные об авто:</h1>
@@ -56,12 +81,47 @@
                 </i>
                     <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
                         <div class="d-grid gap-2">
-                                <button class="btn btn-outline-secondary" type="button" aria-current="page" href="/">
-                                    <a class="none2" href="/" aria-current="page">Отложить в избранное</a>
+                                <button class="btn btn-outline-secondary" type="button" aria-current="page" data-bs-toggle="modal" data-bs-target="#modal-cart1" >
+                                    <a class="none2" href="#" aria-current="page">Отложить в избранное</a>
                                 </button>
-                                <button class="btn btn-primary" type="button" aria-current="page" href="/">
-                                    <a class="none" href="/" aria-current="page">Купить прямо сейчас</a>
+                                <div class="modal fade" id="modal-cart1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Избранное</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+                                              <div class="modal-body">
+                                                Вы уверены, что хотите добавить данное авто в список избранного?
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                                <button type="button" class="btn btn-primary">Да, я уверен</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-cart2" aria-current="page" >
+                                    <a class="none" href="#" aria-current="page">Купить прямо сейчас</a>
                                 </button>
+                                    <div class="modal fade" id="modal-cart2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Покупка</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+                                              <div class="modal-body">
+                                                Вы уверены, что хотите купить данное авто?
+                                              </div>
+
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                                <button type="button" class="btn btn-primary" href="">Да, я уверен</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
 
                         </div>
                     </div>
@@ -74,11 +134,5 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-  <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
-        © 2023 Автосалон Богдана. Засчитайте пожалуйста РГР.
-      </footer>
-</div>
-</body>
-</html>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

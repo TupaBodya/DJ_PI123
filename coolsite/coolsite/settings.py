@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'coolsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'autosalon.sqlite3',
+        'NAME': BASE_DIR / 'autoshop.sqlite3',
     }
 }
 

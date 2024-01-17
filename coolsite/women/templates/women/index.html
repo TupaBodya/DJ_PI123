@@ -1,21 +1,113 @@
+{% extends 'women/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    <link type="text/css" href="{% static 'women/css/index.css' %}" rel="stylesheet">
-</head>
-<body>
-<div class="menu-items">
-    <ul>
-        {% for m in menu %}
-        <li>
-            <a href="{% url m.url_n %}"> {{m.title}} </a>
-        </li>
-        {% endfor %}
-    </ul>
-    <h1>{{menu.0.title }}</h1>
- </div>
-</body>
-</html>
+
+{% block cards %}
+                  <hr class="my-4 container">
+<div class="container">
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('../../static/women/image/S5.png');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+              <br>
+              <br>
+              <br>
+            <h3 class="pt-5 mt-5 mb-1 display-6 lh-1 fw-bold">Какой-то крутой текст</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="../../static/women/image/Logo.png" alt="Bootstrap" width="60" height="40" class="rounded-circle">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em"><use href="#geo-fill"></use></svg>
+                <small>Bryansk</small>
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em"><use href="#calendar3"></use></svg>
+                <small>2007</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('../../static/women/image/S6.png');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-1 mt-5 mb-4 display-6 lh-1 fw-bold">Ещё один познавательный текст</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="../../static/women/image/Logo.png" alt="Bootstrap" width="60" height="40" class="rounded-circle">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em"><use href="#geo-fill"></use></svg>
+                <small>Moscow</small>
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em"><use href="#calendar3"></use></svg>
+                <small>2011</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('../../static/women/image/S7.png');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-3 mt-5 mb-4 display-6 lh-1 fw-bold">Наикрутейший текст</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="../../static/women/image/Logo.png" alt="Bootstrap" width="60" height="40" class="rounded-circle">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em"><use href="#geo-fill"></use></svg>
+                <small>Novosibirsk</small>
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em"><use href="#calendar3"></use></svg>
+                <small>2021</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block carousel %}
+              <hr class="my-4 container">
+
+
+<div class="container">
+<div class="container-fluid my-carousel">
+    <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../../static/women/image/Audi%20A4%203.jpg" style="height: 680px; width: 1100px" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../../static/women/image/BMW%20M5%203.jpg" style="height: 680px; width: 1100px"alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../../static/women/image/Lancer%20EVO%202.jpg" style="height: 680px; width: 1100px"  alt="...">
+    </div>
+      <div class="carousel-item">
+      <img src="../../static/women/image/VW%20B8.jpg" style="height: 680px; width: 1100px" alt="...">
+    </div>
+
+  </div>
+  <button class="carousel-control-prev" style="background-image: none" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Предыдущий</span>
+  </button>
+  <button class="carousel-control-next" style="background-image: none" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Следующий</span>
+  </button>
+</div>
+</div>
+</div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
