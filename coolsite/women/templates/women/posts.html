@@ -38,19 +38,19 @@
 
 
 {% endblock %}
-{% block post %}
-
-<div class="col-6 row justify-content-center ">
-                {% for el in data.post %}
-
-                    <div class="card border-success mb-3 card--blur" >
-                      <div class="card-header bg-transparent border-success">{{el.title}}</div>
-                      <div class="card-body text-success">
-                        <p class="card-text">{{el.text}}</p>
-                      </div>
-                    </div>
-
-                {% endfor %}
+{% block posts %}
+    <br>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">{{ form.as_p }}</label>
+              <div class="invalid-feedback">
+                Неверный ввод данных
+              </div>
+                <br>
             </div>
-
+            <button type="submit">Создать пост</button>
+        </form>
+    </div>
 {% endblock %}

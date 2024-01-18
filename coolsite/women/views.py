@@ -1,8 +1,9 @@
 from django.core.exceptions import BadRequest
 from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponseServerError, HttpResponseBadRequest
 from django.views.generic.list import ListView
-from django.shortcuts import render, get_object_or_404
-from .models import Autoshop
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import *
+from .forms import *
 
 
 cars = [
@@ -19,7 +20,8 @@ menu = [
     {'title': 'Главная страница', 'url_n': 'home'},
     {'title': 'О нас', 'url_n': 'about'},
     {'title': 'Автомобили', 'url_n': 'car_list'},
-    {'title': 'Оплатить покупку', 'url_n':'addpage'}
+    {'title': 'Оплатить покупку', 'url_n':'addpage'},
+    {'title': 'Опубликовать статью', 'url_n':'posts'}
 ]
 
 
@@ -27,8 +29,7 @@ data = {'cars': cars, 'menu': menu, 'car_url': 'car_id'}
 
 def index(request):
     return render(request, 'women/index.html', context=data)
-def about(request):
-    return render(request, 'women/about.html', context=data)
+
 def addpage(request):
     return render(request, 'women/addpage.html', context=data)
 
@@ -41,24 +42,55 @@ def car_index(request, car_id):
         return render(request, 'women/curent_car.html', context=current)
 
 
-def show_post(request):
-    try:
-        post = Autoshop.objects.first()
-    except Autoshop.DoesNotExist:
-        post = None
 
-    if post:
-        data = {
-            'title': post.title,
-            'type': post.type,
-            'price': post.price,
-            'image': post.image,
-        }
+def contact(request) :
+    error = ''
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            error = 'Форма была неверной'
+    form = ContactForm()
+    data = {
+        'title': 'Связь со мной',
+        'form': form,
+        'error': error,
+    }
+    return render(request, 'women/contact.html',  data)
+
+def payment(request) :
+    error = ''
+    if request.method == 'POST':
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            error = 'Форма была неверной'
+    form = ContactForm()
+    data = {
+        'title': 'Связь со мной',
+        'form': form,
+        'error': error,
+    }
+    return render(request, 'women/car_sell.html',  data)
+
+
+
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            return redirect('home')
     else:
-        data = {}
-
-    return render(request, 'women/post.html', data)
-
+        form = PostForm()
+    return render(request, 'women/posts.html', {'form': form})
+def about(request):
+    posts = Post.objects.all()
+    return render(request, 'women/about.html', {'posts': posts})
 
 def car_mainpage(request):
     return render(request, 'women/car_list.html', context=data)

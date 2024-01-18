@@ -1,5 +1,43 @@
 {% extends 'women/base.html' %}
+{% block header1 %}
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/">
+                    <button type="button" class="btn btn-primary">
+                        Главная страница
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/about/">
+                    <button type="button" class="btn btn-primary">
+                        О нас
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/cars/">
+                    <button type="button" class="btn btn-primary">
+                        Автомобили
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/addpage/">
+                    <button type="button" class="btn btn-primary">
+                        Оплатить покупку
+                    </button>
+                </a>
+            </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/posts/">
+                    <button type="button" class="btn btn-primary">
+                        Опубликовать статью
+                    </button>
+                </a>
+            </li>
 
+
+{% endblock %}
 {% block about %}
 <main>
 
@@ -18,8 +56,7 @@
 
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
             <img class="bd-placeholder-img card-img-top" src="../../static/women/image/Gal1.jpg" width="100%" height="225"  role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text class="text-center" x="50%" y="50%" fill="#eceeef" dy=".3em">  Награждение достойных</text></img>
@@ -106,11 +143,26 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
+            {% for post in posts %}
+            <div class="col">
+          <div class="card shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ post.image }}" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text class="text-center" x="50%" y="50%" fill="#eceeef" dy=".3em">{{ post.text }}</text></img>
+            <div class="card-body">
+              <p class="card-text">{{ post.text }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            {% endfor %}
       </div>
     </div>
   </div>

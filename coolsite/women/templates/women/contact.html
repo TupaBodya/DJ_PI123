@@ -22,35 +22,39 @@
                 </a>
     </li>
     <li class="nav-item">
-                <a class="nav-link scrollto" href="/addpage/">
+                <a class="nav-link scrollto" href="/car_sell">
                     <button type="button" class="btn btn-primary">
                         Оплатить покупку
-                    </button>
-                </a>
-            </li>
-    <li class="nav-item">
-                <a class="nav-link scrollto" href="/posts/">
-                    <button type="button" class="btn btn-primary">
-                        Опубликовать статью
                     </button>
                 </a>
             </li>
 
 
 {% endblock %}
-{% block post %}
+{% block contact %}
+  <div class="container mt-5">
+    <h1>Связаться с нами</h1>
+    <form id="comment-form" method="post" class="justify-content-between">
+      {% csrf_token %}
+        {{form.name}}<br>
+        {{form.phone_number}}<br>
+        {{form.email}}<br>
+        {{form.message}}<br>
+        <span>{{error}}</span>
+      <button type="submit" class="btn btn-success mb-4" >Добавить</button>
+    </form>
 
-<div class="col-6 row justify-content-center ">
-                {% for el in data.post %}
+    <div class="mt-4 container row justify-content-between">
+      <h1>Ссылки:</h1>
 
-                    <div class="card border-success mb-3 card--blur" >
-                      <div class="card-header bg-transparent border-success">{{el.title}}</div>
-                      <div class="card-body text-success">
-                        <p class="card-text">{{el.text}}</p>
-                      </div>
-                    </div>
+            <h2><a href="https://vk.com/tupabodya">ВКонтакте</a></h2>
+            <h2><a href="https://github.com/TupaBodya">GitHub</a></h2>
 
-                {% endfor %}
-            </div>
 
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {% endblock %}
