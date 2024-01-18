@@ -11,7 +11,21 @@ class Autoshop(models.Model):
     image = models.ImageField()
     price = models.CharField('Цена', max_length=20)
 
-
-
     def __str__(self):
         return self.title
+
+#class Payment(models.Model):
+    #first_name=
+    #last_name=
+    #email=
+    #address=
+    #type_payment1= models.BooleanField()
+    #type_payment2 = models.BooleanField()
+    #type_payment3 = models.BooleanField()
+    #card_numb=
+    #date_card=
+    #cvv=
+    #confirm=models.BooleanField()
+
+
+
