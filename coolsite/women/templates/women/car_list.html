@@ -1,4 +1,4 @@
-{% extends 'women/base.html' %}
+{% extends 'women/Base.html' %}
 {% load static %}
 
 {% block style %}
@@ -53,48 +53,71 @@
         }
     </style>
 {% endblock %}
+{% block header1 %}
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/">
+                    <button type="button" class="btn btn-primary">
+                        Главная страница
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/about/">
+                    <button type="button" class="btn btn-primary">
+                        О нас
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/cars/">
+                    <button type="button" class="btn btn-primary">
+                        Автомобили
+                    </button>
+                </a>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/addpage/">
+                    <button type="button" class="btn btn-primary">
+                        Оплатить покупку
+                    </button>
+                </a>
+            </li>
+    </li>
+    <li class="nav-item">
+                <a class="nav-link scrollto" href="/posts/">
+                    <button type="button" class="btn btn-primary">
+                        Опубликовать статью
+                    </button>
+                </a>
+            </li>
 
+{% endblock %}
 {% block list %}
-{% for i in cars %}
+
+{% for cars in vehicles %}
                       <hr class="my-4 container">
 <div class="container">
 <div class="card mb-3 justify-content-center" style="max-width: 1920px;">
   <div class="row g-0">
     <div class="col-md-7">
-      <img src="{% static 'women/image/' %}{{i.image_}}" style="height: 440px; width: 700px" class="img-fluid rounded-start align-items-center mh-100 mw-100" alt="...">
+      <img src="{{ cars.image.url }}" style="height: 440px; width: 700px" class="img-fluid rounded-start align-items-center mh-100 mw-100" alt="...">
     </div>
     <div class="col-md-5">
       <div class="card-body">
-        <h5 class="card-title"><a href="{% url car_url i.id %}">{{i.Model}}</a></h5>
-            <i>Дата изготовления: {{i.Date}} год.</i>
+        <h5 class="card-title"><a href="">{{ cars.title }}</a></h5>
+            <i>Дата начала продаж: {{ cars.date }}</i>
             <br>
-            <i>Пробег: {{i.Range}} Км.</i>
+            <i>Пробег: {{ cars.range }} Км.</i>
             <br>
-            <i>
-                Двигатель:
-                {% if i.Engine == 'Diesel' %}
-                    Дизельный
-                {% else %}
-                    Бензиновый
-                {% endif %}
+            <i>Двигатель: {{ cars.engine }}
             </i>
             <br>
             <i>
-                Тип:
-                {% if i.Type == 'sedan' %}
-                    Седан
-                {% else %}
-                    Внедорожник
-                {% endif %}
+                Тип: {{ cars.type }}
             </i>
             <br>
             <i>
-                Наличие:
-                {% if i.Availability %}
-                    Имеется в наличии
-                {% else %}
-                    Не имеется в наличии
-                {% endif %}
+                Наличие: {{ cars.availability }}
                 </i>
             <br>
       <br>
@@ -102,9 +125,9 @@
       <div class="row container">
           <div class="col-7 align-items-center ">
                 <h2 class="text-body-emphasis text-center ">
-                    {{i.Price}}
+                    {{ cars.price }}
                     </h2>
-                    <a class="btn animated-button bi bi-cart" href="{% url car_url i.id %}">
+                    <a class="btn animated-button bi bi-cart" href="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                         </svg>

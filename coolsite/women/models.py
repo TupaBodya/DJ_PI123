@@ -7,7 +7,7 @@ from django.conf import settings
 class Post(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()
-    image = models.ImageField(upload_to='photos/', default='../../static/women/image/New_post.gif')
+    image = models.ImageField(upload_to='photos')
 
     def __str__(self):
         return self.title
@@ -31,7 +31,7 @@ class Autoshop(models.Model):
     range = models.CharField('Пробег', max_length=20)
     engine = models.CharField('Тип двигателя', max_length=20)
     date = models.DateTimeField('Год производства', auto_now_add=True)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='photos')
     price = models.CharField('Цена', max_length=20)
 
     def __str__(self):

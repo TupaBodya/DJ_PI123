@@ -1,0 +1,18 @@
+{% extends 'women/Base.html' %}
+
+{% block add_car %}
+    <br>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">{{ form.as_p }}</label>
+              <div class="invalid-feedback">
+                Неверный ввод данных
+              </div>
+                <br>
+            </div>
+            <button type="submit">Создать пост</button>
+        </form>
+    </div>
+{% endblock %}

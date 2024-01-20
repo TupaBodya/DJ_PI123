@@ -1,6 +1,6 @@
 from django.forms import ModelForm, TextInput, DateTimeInput, Textarea, EmailInput, forms
 
-from .models import Post, Contact, Payment
+from .models import Post, Contact, Payment, Autoshop
 
 
 class PaymentForm(ModelForm):
@@ -45,6 +45,12 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'text', 'image')
+
+class AutoshopForm(ModelForm):
+    class Meta:
+        model = Autoshop
+        fields = ('title', 'type', 'availability', 'range', 'engine', 'image', 'price')
+
 
 class ContactForm(ModelForm):
     class Meta:

@@ -14,4 +14,5 @@ urlpatterns = [
     path('addpage/', views.addpage, name='addpage'),
     path('posts/', views.create_post, name='posts'),
     path('contact/', views.contact, name='contact'),
+    path('add_car/', views.create_car_list, name='create_car'),
 ]

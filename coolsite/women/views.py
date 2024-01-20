@@ -92,8 +92,20 @@ def about(request):
     posts = Post.objects.all()
     return render(request, 'women/about.html', {'posts': posts})
 
+
+def create_car_list(request):
+    if request.method == 'POST':
+        form = AutoshopForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            return redirect('home')
+    else:
+        form = AutoshopForm()
+    return render(request, 'women/add_car.html', {'form': form})
+
 def car_mainpage(request):
-    return render(request, 'women/car_list.html', context=data)
+    vehicles = Autoshop.objects.all()
+    return render(request, 'women/car_list.html', {'vehicles': vehicles})
 
 def car_sell(request):
     return render(request, 'women/car_sell.html', context=data)
